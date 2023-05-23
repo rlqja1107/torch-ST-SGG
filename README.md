@@ -1,3 +1,0 @@
-# torch-st-sgg
-
-check
