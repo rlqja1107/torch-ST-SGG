@@ -16,8 +16,7 @@ dist/
 checkpoint/
 
 # dataset
-datasets/*
-*.png
+# *.png
 *.jpg
 *.jpeg
 
@@ -58,6 +57,5 @@ configs_save/
 requirements.txt
 1000DS_VG_VGKB_train_statistics.cache
 50DS_VG_VGKB_train_statistics.cache
-datasets/
 .vscode/
 obj_pred_info_1800
