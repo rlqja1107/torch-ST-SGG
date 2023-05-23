@@ -6,14 +6,15 @@
 
 
 ![img](Figure.png)  
-
-* **Problem 1**: Long-tailed predicate distribution  
+### Addressing the issue: Inherent Noise in Dataset  
+* **Challenge 1**: Long-tailed predicate distribution  
 The long-tailed predicate distribution in SGG refers to a distribution in which general predicates (e.g. “on”) frequently appear, while fine-grained predicates (e.g. “walking in”) are rarely present. Owing to such a long-tailed predicate distribution inherent in the dataset, existing SGG models tend to make accurate predictions for general predicates, while making incorrect predictions for fine-grained predicates.
 
-* **Problem 2**: Missing Annotation  
-A missing annotations provide incorrect supervision to SGG models as unannotated triplets are carelessly assigned to the background class (i.e., bg), even though some unannotated triplets should have been indeed annotated with another class (See (a)). For example, treating the missing annotation between person and sidewalk as bg may confuse SGG models that are already trained with a triplet ⟨person, walking in, sidewalk⟩. In addition, the prevalence of triplets with the bg predicates between person and sidewalk throughout the dataset would exacerbate the problem.
+* **Challenge 2**: Missing Annotation  
+A missing annotations provide incorrect supervision to SGG models as unannotated triplets are carelessly assigned to the background class (i.e., bg), even though some unannotated triplets should have been indeed annotated with another class (See (a)). For example, treating the missing annotation between person and sidewalk as bg may confuse SGG models that are already trained with a triplet ⟨person, walking in, sidewalk⟩. In addition, the prevalence of triplets with the bg predicates between person and sidewalk throughout the dataset would exacerbate the problem.  
 
-* **Solution**: Self-training framework  
+### Proposed Framework (**ST-SGG**)
+* **ST-SGG**: Self-training framework  
 We aim to effectively utilize the unannotated triplets in benchmark scene graph datasets by assigning them accurate pseudo-labels. To this end, we introduce a self-training framework for 
 SGG, called **ST-SGG**, which assigns pseudo-labels to confident predictions among unannotated
 triplets, and iteratively trains the SGG model based on them (See (b)). By actively assigning the pseudo-labels on fine-grained predicates, **ST-SGG** effectively alleviates the long-tailed problem.
