@@ -1,6 +1,6 @@
 # Dataset: Visual Genome 50
 
-We follow the same-preprocessing strategy used in [IE-Trans](https://arxiv.org/pdf/2203.11654.pdf). Please follow the download the linked files to prepare the dataset.
+We follow the same-preprocessing strategy used in [IE-Trans](https://arxiv.org/pdf/2203.11654.pdf). Please download the linked files to prepare the dataset.
 
 * Download the raw image dataset followed by links [part1 (9 Gb)](https://cs.stanford.edu/people/rak248/VG_100K_2/images.zip), [part2 (5 Gb)](https://cs.stanford.edu/people/rak248/VG_100K_2/images2.zip). After downloading the two files, put the datasets into **datasets/vg/50** directory. 
 
@@ -22,7 +22,7 @@ You should check the dataset path in `maskrcnn_benchmark/config/paths_catalog.py
 
 ## I-Trans Dataset
 
-To reproduce the **I-Trans+ST-SGG** performance, we also provide the dataset adopted the I-Trans for each SGG model. We also apply *k_i* parameter, which decide the amount of changing the annotated dataset, as 0.7. For more details, refer to [IE-Trans](https://github.com/waxnkw/IETrans-SGG.pytorch/blob/master/MODEL_ZOO.md) To run the I-Trans+ST-SGG, download the below pickle file and put them on `datasets/vg/50/{model_name}` directory.
+To reproduce the **I-Trans+ST-SGG** performance, we also provide the dataset adopted the I-Trans for each SGG model. Following the IE-Trans, we apply *k_i* parameter, which decide the amount of changing the annotated dataset, as 0.7. For more details, refer to [IE-Trans](https://github.com/waxnkw/IETrans-SGG.pytorch/blob/master/MODEL_ZOO.md) To run the I-Trans+ST-SGG, download the below pickle file and put them on `datasets/vg/50/{model_name}` directory.
   
 * [Motif+I-Trans](https://drive.google.com/file/d/1WRaSADSdjujQzzEn4wqwE6_O2ynWnlCm/view?usp=sharing)  
 * [VCTree+I-Trans](https://drive.google.com/file/d/1oJI-4FiqQL07VUC5a_lWFuwJ_nRMUMu5/view?usp=sharing)  
