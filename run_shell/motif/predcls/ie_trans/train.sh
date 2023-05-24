@@ -3,7 +3,7 @@ mutli_gpu=false # whether use multi-gpu or not
 num_gpu=2
 
 OUTPATH="checkpoints/50/motif/predcls/no_ext_yes_int"
-SPECIFIED_PATH="checkpoints/50/motif/Final/no_ext_yes_int.pk"
+SPECIFIED_PATH="datasets/50/motif/Motif_i-trans.pk"
 GLOVE_DIR="/home/public/Datasets/CV/vg_bm" # Glove directory
 
 mkdir -p $OUTPATH

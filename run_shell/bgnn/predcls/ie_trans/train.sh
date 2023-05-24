@@ -3,7 +3,7 @@ mutli_gpu=false # whether use multi-gpu or not
 num_gpu=2
 
 OUTPATH="checkpoints/50/bgnn/predcls/no_ext_yes_int"
-SPECIFIED_PATH="checkpoints/50/bgnn/Final/no_ext_yes_int.pk"
+SPECIFIED_PATH="datasets/50/bgnn/BGNN_i-trans.pk"
 GLOVE_DIR="/home/public/Datasets/CV/vg_bm" # Glove directory
 
 mkdir -p $OUTPATH

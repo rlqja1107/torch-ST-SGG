@@ -799,6 +799,7 @@ class RelAware_Gumbel(nn.Module):
         statistics = get_dataset_statistics(cfg)
         self.obj_mapping = None
         obj_classes, _ = statistics["obj_classes"], statistics["rel_classes"]
+        # For VG-1800
         if len(statistics['obj_classes']) > 10000:
             print(str("/home/public/Datasets/CV/vg_1800/{}.pt".format(len(statistics['obj_classes']))))
             self.obj_mapping = torch.load(str("/home/public/Datasets/CV/vg_1800/{}.pt".format(len(statistics['obj_classes']))))

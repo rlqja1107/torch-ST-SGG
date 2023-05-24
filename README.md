@@ -58,6 +58,8 @@ bash run_shell/motif/predcls/bilvl/train_stsgg.sh
 
 ### Debiasing - Internal transfer ([IE-Trans](https://arxiv.org/pdf/2203.11654.pdf))
 
+Instead of running the code for I-Trans (i.e., pretrain.sh, internal.sh, external.sh, and combine.sh), you can download the dataset file adopted the I-Trans in [DATASET.md](DATASET.md)
+
 ``` bash  
 # Pretrain the model for
 bash run_shell/motif/predcls/ie_trans/relabel/pretrain.sh

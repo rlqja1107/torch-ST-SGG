@@ -24,10 +24,10 @@ You should check the dataset path in `maskrcnn_benchmark/config/paths_catalog.py
 
 To reproduce the **I-Trans+ST-SGG** performance, we also provide the dataset adopted the I-Trans for each SGG model. We also apply *k_i* parameter, which decide the amount of changing the annotated dataset, as 0.7. For more details, refer to [IE-Trans](https://github.com/waxnkw/IETrans-SGG.pytorch/blob/master/MODEL_ZOO.md) To run the I-Trans+ST-SGG, download the below pickle file and put them on `datasets/vg/50/{model_name}` directory.
   
-* [Motif+I-Trans](https://drive.google.com/file/d/1rYb44v3rq1clSUwr1PEcyOy3-KE-XFsY/view?usp=sharing)  
-* [VCTree+I-Trans](https://drive.google.com/file/d/19JWfO0CyzjciUc68oclwNJUHTKJupNCp/view?usp=sharing)  
-* [BGNN+I-Trans](https://drive.google.com/file/d/1jXeo4Hk-XSgctbp7Lr9_uZGhs6hXIdYb/view?usp=sharing)  
-* [HetSGG+I-Trans](https://drive.google.com/file/d/1Ssc4wno2z-U4Ht5j6A2kx2rfV2fqbilM/view?usp=sharing)  
+* [Motif+I-Trans](https://drive.google.com/file/d/1WRaSADSdjujQzzEn4wqwE6_O2ynWnlCm/view?usp=sharing)  
+* [VCTree+I-Trans](https://drive.google.com/file/d/1oJI-4FiqQL07VUC5a_lWFuwJ_nRMUMu5/view?usp=sharing)  
+* [BGNN+I-Trans](https://drive.google.com/file/d/1xeQVIc2GjhlMkB6KH-12XT2e1pxZzFrr/view?usp=sharing)  
+* [HetSGG+I-Trans](https://drive.google.com/file/d/1IEWE6aUwO40T9Oqs8mcbHUQQ-zZlBskt/view?usp=sharing)  
 
 
 
