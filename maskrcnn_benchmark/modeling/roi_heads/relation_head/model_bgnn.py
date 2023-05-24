@@ -101,13 +101,7 @@ class MessagePassingUnit_v1(nn.Module):
         if gate.shape[1] > 1:
             gate = gate.mean(1)  # average the nodes attention between the nodes
         if aux_gate is not None:
-            # sigmoid_reverse_aux_gate = reverse_sigmoid(aux_gate)
-            # sigmoid_reverse_gate = reverse_sigmoid(gate)
-            # gate = (
-            #     self.gate_weight * sigmoid_reverse_gate
-            #     + self.aux_gate_weight * sigmoid_reverse_aux_gate
-            # )
-            # gate = torch.sigmoid(gate)
+
 
             gate = gate * aux_gate
         # print 'gate', gate
@@ -743,10 +737,10 @@ class BGNNContext(nn.Module):
                         target_f, source_f, select_relness_dist
                     )
             else:
-                if self.relness_weighting_mp: # True
+                if self.relness_weighting_mp:
                     relness = select_relness if self.relness_score_recalibration_method != "gumbel" else None
-                    select_relness = relness_scores[transfer_list[:, 1]] # Rel => Entity의 Score
-                    transferred_features, weighting_gate = gate_module( # Transferred_feature에는 gating된 edge feature, weighting gate : Predicate => Entity
+                    select_relness = relness_scores[transfer_list[:, 1]] 
+                    transferred_features, weighting_gate = gate_module( 
                         target_f, source_f, relness
                     )
                 else:
@@ -775,7 +769,7 @@ class BGNNContext(nn.Module):
             aggregate_feat[vaild_aggregate_idx] /= avg_factor[vaild_aggregate_idx].long()
 
             feature_data = aggregate_feat
-        return feature_data # 각 Entity에 Aggregated Message가 존재
+        return feature_data
 
 
     def forward(
@@ -821,8 +815,7 @@ class BGNNContext(nn.Module):
                 pre_cls_logits_each_iter.append(pre_cls_logits)
             relatedness_scores = pred_relatedness_scores
 
-            # apply GT
-            if self.apply_gt_for_rel_conf: # False
+            if self.apply_gt_for_rel_conf:
                 ref_relatedness = rel_gt_binarys
 
                 if pred_relatedness_scores is None:
@@ -858,7 +851,7 @@ class BGNNContext(nn.Module):
 
             self.forward_time += 1
 
-            if self.pretrain_pre_clser_mode: # False
+            if self.pretrain_pre_clser_mode:
                 #  directly return without graph building
                 refined_inst_features = inst_feature4iter[-1]
                 refined_rel_features = rel_feature4iter[-1]
@@ -887,11 +880,6 @@ class BGNNContext(nn.Module):
                     or self.pretrain_pre_clser_mode
                 ):  # directly return, no mp process
 
-                    # print("valid_inst_idx", valid_inst_idx.nonzero(as_tuple=False))
-                    # print("batchwise_rel_pair_inds", batchwise_rel_pair_inds.nonzero(as_tuple=False))
-                    # print("subj_pred_map", subj_pred_map.nonzero(as_tuple=False))
-                    # print("obj_pred_map", obj_pred_map.nonzero(as_tuple=False))
-                    # print("WARNING: all graph nodes has been filtered out. ")
 
                     refined_inst_features = inst_feature4iter[-1]
                     refined_rel_features = rel_feature4iter[-1]
@@ -902,12 +890,12 @@ class BGNNContext(nn.Module):
                     continue
 
             # graph module
-            for t in range(self.update_step): # 3
+            for t in range(self.update_step):
                 param_idx = 0
-                if not self.share_parameters_each_iter: # False
+                if not self.share_parameters_each_iter:
                     param_idx = t
                 """update object features pass message from the predicates to instances"""
-                object_sub = self.prepare_message( # Entity가 Subect일 때 Message Aggregate
+                object_sub = self.prepare_message(
                     inst_feature4iter[t],
                     rel_feature4iter[t],
                     subj_pred_map,
@@ -915,7 +903,7 @@ class BGNNContext(nn.Module):
                     relness_scores=relness_scores,
                     relness_logits=pre_cls_logits,
                 )
-                object_obj = self.prepare_message( # Entity가 Object일 때 Message Aggregate
+                object_obj = self.prepare_message( #
                     inst_feature4iter[t],
                     rel_feature4iter[t],
                     obj_pred_map,
@@ -957,10 +945,10 @@ class BGNNContext(nn.Module):
                         0,
                         squeeze_tensor(valid_inst_pair_inds.nonzero(as_tuple=False)),
                     )
-                    phrase_sub, sub2pred_gate_weight = self.gate_sub2pred[param_idx]( # Sub => Pred의 Message
+                    phrase_sub, sub2pred_gate_weight = self.gate_sub2pred[param_idx]( 
                         valid_pairs_rel_feats, feat_sub2pred
                     )
-                    phrase_obj, obj2pred_gate_weight = self.gate_obj2pred[param_idx]( # Obj => Pred의 Message
+                    phrase_obj, obj2pred_gate_weight = self.gate_obj2pred[param_idx](
                         valid_pairs_rel_feats, feat_obj2pred
                     )
                     GRU_input_feature_phrase = (phrase_sub + phrase_obj) / 2.0
@@ -993,23 +981,14 @@ class BGNNContext(nn.Module):
                             GRU_input_feature_phrase, rel_feature4iter[t]
                         )
                     )
-            refined_inst_features = inst_feature4iter[-1] # 최종 Update된 Entity
-            refined_rel_features = rel_feature4iter[-1] # 최종 Update된 Predicate
+            refined_inst_features = inst_feature4iter[-1] 
+            refined_rel_features = rel_feature4iter[-1]
 
             refine_ent_feats_each_iters.append(refined_inst_features)
 
             refine_rel_feats_each_iters.append(refined_rel_features)
 
-        # if (
-        #     len(relatedness_each_iters) > 0
-        # ):  # todo why disabled in training??
-        #     relatedness_each_iters = torch.stack(
-        #         [torch.stack(each) for each in relatedness_each_iters]
-        #     )
-        #     # bsz, num_obj, num_obj, iter_num
-        #     relatedness_each_iters = relatedness_each_iters.permute(1, 2, 3, 0)
-        # else:
-        #     relatedness_each_iters = None
+
 
         if len(pre_cls_logits_each_iter) == 0:
             pre_cls_logits_each_iter = None

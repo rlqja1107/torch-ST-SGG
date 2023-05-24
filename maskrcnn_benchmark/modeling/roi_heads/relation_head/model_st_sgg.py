@@ -21,7 +21,7 @@ class ST_SGG(nn.Module):
         self.use_gsl_output = cfg.MODEL.ROI_RELATION_HEAD.STSGG_MODULE.USE_GSL_OUTPUT
         
         # statistics: information of N predicate class
-        statistics = torch.load("initial_data/obj_pred_info_1800.pth") if self.num_rel_cls > 200 else torch.load("initial_data/obj_pred_info_50.pth")
+        statistics = torch.load("initial_data/obj_pred_info_1800") if self.num_rel_cls > 200 else torch.load("initial_data/obj_pred_info_50")
         fg_matrix = statistics['fg_matrix']
         pred_count = fg_matrix.sum(0).sum(0)[1:]
         pred_count = torch.hstack([torch.LongTensor([0]), pred_count])

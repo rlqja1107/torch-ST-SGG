@@ -103,13 +103,7 @@ class MessagePassingUnit_v1(nn.Module):
         if gate.shape[1] > 1:
             gate = gate.mean(1)  # average the nodes attention between the nodes
         if aux_gate is not None:
-            # sigmoid_reverse_aux_gate = reverse_sigmoid(aux_gate)
-            # sigmoid_reverse_gate = reverse_sigmoid(gate)
-            # gate = (
-            #     self.gate_weight * sigmoid_reverse_gate
-            #     + self.aux_gate_weight * sigmoid_reverse_aux_gate
-            # )
-            # gate = torch.sigmoid(gate)
+
 
             gate = gate * aux_gate
         # print 'gate', gate
@@ -730,8 +724,8 @@ class BGNNContext_GSL(nn.Module):
 
             relness = select_relness
             if self.relness_weighting_mp: # True
-                select_relness = relness_scores[transfer_list[:, 1]] # Rel => Entity의 Score
-                transferred_features, weighting_gate = gate_module( # Transferred_feature에는 gating된 edge feature, weighting gate : Predicate => Entity
+                select_relness = relness_scores[transfer_list[:, 1]]
+                transferred_features, weighting_gate = gate_module(
                     target_f, source_f, relness
                 )
             else:
@@ -760,7 +754,7 @@ class BGNNContext_GSL(nn.Module):
             aggregate_feat[vaild_aggregate_idx] /= avg_factor[vaild_aggregate_idx].float()
 
             feature_data = aggregate_feat
-        return feature_data # 각 Entity에 Aggregated Message가 존재
+        return feature_data
 
     def pairwise_rel_features(self, augment_obj_feat, rel_pair_idxs):
         pairwise_obj_feats_fused = self.pairwise_obj_feat_updim_fc(augment_obj_feat)
@@ -894,11 +888,6 @@ class BGNNContext_GSL(nn.Module):
                     or self.pretrain_pre_clser_mode
                 ):  # directly return, no mp process
 
-                    # print("valid_inst_idx", valid_inst_idx.nonzero(as_tuple=False))
-                    # print("batchwise_rel_pair_inds", batchwise_rel_pair_inds.nonzero(as_tuple=False))
-                    # print("subj_pred_map", subj_pred_map.nonzero(as_tuple=False))
-                    # print("obj_pred_map", obj_pred_map.nonzero(as_tuple=False))
-                    # print("WARNING: all graph nodes has been filtered out. ")
 
                     refined_inst_features = inst_feature4iter[-1]
                     refined_rel_features = rel_feature4iter[-1]
@@ -914,14 +903,14 @@ class BGNNContext_GSL(nn.Module):
                 if not self.share_parameters_each_iter: # False
                     param_idx = t
                 """update object features pass message from the predicates to instances"""
-                object_sub = self.prepare_message( # Entity가 Subect일 때 Message Aggregate
+                object_sub = self.prepare_message(
                     inst_feature4iter[t],
                     rel_feature4iter[t],
                     subj_pred_map,
                     self.gate_pred2sub[param_idx],
                     relness_scores=relness_scores,
                 )
-                object_obj = self.prepare_message( # Entity가 Object일 때 Message Aggregate
+                object_obj = self.prepare_message(
                     inst_feature4iter[t],
                     rel_feature4iter[t],
                     obj_pred_map,
@@ -998,8 +987,8 @@ class BGNNContext_GSL(nn.Module):
                             GRU_input_feature_phrase, rel_feature4iter[t]
                         )
                     )
-            refined_inst_features = inst_feature4iter[-1] # 최종 Update된 Entity
-            refined_rel_features = rel_feature4iter[-1] # 최종 Update된 Predicate
+            refined_inst_features = inst_feature4iter[-1]
+            refined_rel_features = rel_feature4iter[-1]
 
             refine_ent_feats_each_iters.append(refined_inst_features)
             # fuse the entities features to the relationship feature for classification
@@ -1020,4 +1009,4 @@ class BGNNContext_GSL(nn.Module):
 
 
 def build_bgnn_model(cfg, in_channels):
-    return BGNNContext_rp(cfg, in_channels)
+    return BGNNContext_GSL(cfg, in_channels)

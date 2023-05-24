@@ -811,33 +811,6 @@ class RelAware_Gumbel(nn.Module):
             self.obj_sem_embed.weight.copy_(obj_embed_vecs, non_blocking=True)
 
 
-        # self.cfg = cfg
-        # self.num_rel_cls = cfg.MODEL.ROI_RELATION_HEAD.NUM_CLASSES
-        # self.pooling_function = self.cfg.MODEL.ROI_RELATION_HEAD.BGNN_MODULE.GRAPH_POOLING
-        # self.input_dim = input_dim
-
-        # self.predictor_type = (
-        #     cfg.MODEL.ROI_RELATION_HEAD.RELATION_PROPOSAL_MODEL.REL_AWARE_PREDICTOR_TYPE
-        # )
-        # self.num_obj_classes = cfg.MODEL.ROI_BOX_HEAD.NUM_CLASSES
-        # self.embed_dim = cfg.MODEL.ROI_RELATION_HEAD.EMBED_DIM
-        # self.geometry_feat_dim = 128
-        # self.roi_feat_dim = cfg.MODEL.ROI_BOX_HEAD.MLP_HEAD_DIM
-        # self.hidden_dim = 512
-        # self.use_side_info = True
-        # statistics = get_dataset_statistics(cfg)
-        # obj_classes, rel_classes = statistics["obj_classes"], statistics["rel_classes"]
-
-        # obj_embed_vecs = obj_edge_vectors(
-        #     obj_classes, wv_dir=self.cfg.GLOVE_DIR, wv_dim=self.embed_dim
-        # )
-        # self.obj_sem_embed = nn.Embedding(self.num_obj_classes, self.embed_dim) # 200
-
-        # with torch.no_grad():
-        #     self.obj_sem_embed.weight.copy_(obj_embed_vecs, non_blocking=True)
-
-
-
         self.obj_pos_embed = nn.Sequential(
         nn.Linear(9, self.geometry_feat_dim), # 128
         nn.ReLU(),
