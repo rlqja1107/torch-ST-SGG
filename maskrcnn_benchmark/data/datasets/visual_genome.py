@@ -140,7 +140,7 @@ class VGDataset(torch.utils.data.Dataset):
         }
 
         fg_matrix, bg_matrix = get_VG_statistics(self, img_dir=self.img_dir, roidb_file=self.roidb_file, dict_file=self.dict_file,
-                                                image_file=self.image_file, must_overlap=True)
+                                                image_file=self.image_file, must_overlap=True, maintain_data=False)
         eps = 1e-3
         bg_matrix += 1
         fg_matrix[:, :, 0] = bg_matrix
@@ -168,7 +168,10 @@ class VGDataset(torch.utils.data.Dataset):
         return self.img_info[index]
 
 
-    def get_groundtruth(self, index, evaluation=False, flip_img=False):
+    def get_groundtruth(self, index, evaluation=False, flip_img=False, inner_idx=True):
+        if not inner_idx:
+            if self.repeat_dict is not None:
+                index = self.idx_list[index]
 
         img_info = self.get_img_info(index)
         w, h = img_info['width'], img_info['height']
@@ -195,7 +198,6 @@ class VGDataset(torch.utils.data.Dataset):
                 all_rel_sets[(o0, o1, r)].append(r)
             relation = [(k[0], k[1], np.random.choice(v)) for k,v in all_rel_sets.items()]
             relation = np.array(relation, dtype=np.int32)
-        gt_label = target.extra_fields['labels'].numpy()
        
         # add relation to target
         num_box = len(target)
@@ -222,9 +224,11 @@ class VGDataset(torch.utils.data.Dataset):
             target.add_field("relation", relation_map, is_triplet=True)
             if relation_map_non_masked is not None :
                 target.add_field("relation_non_masked", relation_map_non_masked.long(), is_triplet=True)
-
-
-            target = target.clip_to_image(remove_empty=False)
+            if evaluation:
+                target = target.clip_to_image(remove_empty=False)
+                target.add_field("relation_tuple", torch.LongTensor(relation)) # for evaluation
+            else:
+                target = target.clip_to_image(remove_empty=True)
             target.add_field("relation_tuple", torch.LongTensor(
                     relation))  # for evaluation
             return target
@@ -252,12 +256,13 @@ class VGDataset(torch.utils.data.Dataset):
         return len(self.filenames)
 
 
-def get_VG_statistics(train_data, img_dir, roidb_file, dict_file, image_file, must_overlap=True):
+def get_VG_statistics(train_data, img_dir, roidb_file, dict_file, image_file, must_overlap=True, maintain_data=True):
     # if train_data.__class__.__name__ == 'InTransDataset' and "self_training" in cfg.MODEL.ROI_RELATION_HEAD.PREDICTOR:
     # if train_data.__class__.__name__
-    train_data = VGDataset(split='train', img_dir=img_dir, roidb_file=roidb_file, 
-                        dict_file=dict_file, image_file=image_file, num_val_im=5000, 
-                        filter_duplicate_rels=False)
+    if maintain_data:
+        train_data = VGDataset(split='train', img_dir=img_dir, roidb_file=roidb_file, 
+                            dict_file=dict_file, image_file=image_file, num_val_im=5000, 
+                            filter_duplicate_rels=False)
     num_obj_classes = len(train_data.ind_to_classes) if train_data.obj_mapping is None else 2
     num_rel_classes = len(train_data.ind_to_predicates)
     fg_matrix = np.zeros((num_obj_classes, num_obj_classes, num_rel_classes), dtype=np.int64)

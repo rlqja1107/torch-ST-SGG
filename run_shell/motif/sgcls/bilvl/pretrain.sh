@@ -1,4 +1,4 @@
-export CUDA_VISIBLE_DEVICES="7" # if you use multi-gpu, then insert the number of gpu e.g., export CUDA_VISIBLE_DEVICES="4,5"
+export CUDA_VISIBLE_DEVICES="1" # if you use multi-gpu, then insert the number of gpu e.g., export CUDA_VISIBLE_DEVICES="4,5"
 mutli_gpu=false # whether use multi-gpu or not
 num_gpu=2
 OUTPATH="checkpoints/50/motif/sgcls/bilvl" # save directory
@@ -18,6 +18,8 @@ if $mutli_gpu;then
     SOLVER.VAL_PERIOD 2000 \
     SOLVER.CHECKPOINT_PERIOD 2000 \
     SOLVER.PRE_VAL False \
+    MODEL.ROI_RELATION_HEAD.PREDICT_USE_BIAS True \
+    MODEL.ROI_RELATION_HEAD.TRAIN_USE_BIAS True \
     TEST.METRIC "R" \
     MODEL.ROI_RELATION_HEAD.DATA_RESAMPLING True \
     MODEL.ROI_RELATION_HEAD.DATA_RESAMPLING_PARAM.REPEAT_FACTOR 0.1 \
@@ -36,6 +38,8 @@ else
     SOLVER.CHECKPOINT_PERIOD 2000 \
     TEST.METRIC "R" \
     MODEL.ROI_RELATION_HEAD.DATA_RESAMPLING True \
+    MODEL.ROI_RELATION_HEAD.PREDICT_USE_BIAS True \
+    MODEL.ROI_RELATION_HEAD.TRAIN_USE_BIAS True \
     MODEL.ROI_RELATION_HEAD.DATA_RESAMPLING_PARAM.REPEAT_FACTOR 0.1 \
     MODEL.ROI_RELATION_HEAD.DATA_RESAMPLING_PARAM.INSTANCE_DROP_RATE 0.9 \
     SOLVER.PRE_VAL False \

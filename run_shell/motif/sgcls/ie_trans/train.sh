@@ -14,7 +14,6 @@ if $mutli_gpu;then
   python -m torch.distributed.launch \
     --master_port 10093 --nproc_per_node=$num_gpu \
     tools/relation_train_net.py --config-file "configs/wsup-50.yaml" \
-    DATASETS.TRAIN \(\"50DS_VG_VGKB_train\",\) \
     MODEL.ROI_RELATION_HEAD.USE_GT_BOX True \
     MODEL.ROI_RELATION_HEAD.USE_GT_OBJECT_LABEL False \
     MODEL.ROI_RELATION_HEAD.PREDICTOR MotifPredictor \
@@ -25,14 +24,12 @@ if $mutli_gpu;then
     SOLVER.CHECKPOINT_PERIOD 2000 \
     OUTPUT_DIR $OUTPATH  \
     MODEL.ROI_RELATION_HEAD.NUM_CLASSES 51 \
-    SOLVER.PRE_VAL False \
     GLOVE_DIR $GLOVE_DIR \
     WSUPERVISE.SPECIFIED_DATA_FILE $SPECIFIED_PATH \
     WSUPERVISE.DATASET InTransDataset \
     EM.MODE "x"
 else
   python tools/relation_train_net.py --config-file "configs/wsup-50.yaml" \
-    DATASETS.TRAIN \(\"50DS_VG_VGKB_train\",\) \
     MODEL.ROI_RELATION_HEAD.USE_GT_BOX True \
     MODEL.ROI_RELATION_HEAD.USE_GT_OBJECT_LABEL False \
     MODEL.ROI_RELATION_HEAD.PREDICTOR MotifPredictor \
@@ -43,7 +40,6 @@ else
     SOLVER.CHECKPOINT_PERIOD 2000 \
     OUTPUT_DIR $OUTPATH  \
     MODEL.ROI_RELATION_HEAD.NUM_CLASSES 51 \
-    SOLVER.PRE_VAL False \
     GLOVE_DIR $GLOVE_DIR \
     WSUPERVISE.SPECIFIED_DATA_FILE $SPECIFIED_PATH \
     EM.MODE "x"

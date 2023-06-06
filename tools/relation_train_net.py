@@ -53,7 +53,7 @@ torch.backends.cudnn.benchmark = False # False!!
 torch.backends.cudnn.deterministic = True
 torch.set_num_threads(4)
 
-torch.autograd.set_detect_anomaly(True) ##################################
+torch.autograd.set_detect_anomaly(False) ##################################
 
 def train(cfg, local_rank, distributed, logger):
     debug_print(logger, 'prepare training')
@@ -379,7 +379,7 @@ def main():
     parser = argparse.ArgumentParser(description="PyTorch Relation Detection Training")
     parser.add_argument(
         "--config-file",
-        default="configs/sup-50_mpnn.yaml", # wsup-50_check, sup-1000 sup-50_motif_vctree
+        default="configs/wsup-50.yaml", # wsup-50_check, sup-1000 sup-50_motif_vctree
         metavar="FILE",
         help="path to config file",
         type=str,
@@ -421,7 +421,7 @@ def main():
     if output_dir:
         mkdir(output_dir)
 
-    logger = setup_logger("pysgg", output_dir, get_rank())
+    logger = setup_logger("ST-SGG", output_dir, get_rank())
     logger.info("Using {} GPUs".format(num_gpus))
     # if cfg.DEBUG:
     #     logger.info("Collecting env info (might take some time)")

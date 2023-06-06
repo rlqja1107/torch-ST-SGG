@@ -908,22 +908,15 @@ class RelAware_Gumbel(nn.Module):
 
             sub_visual_feat = visual[pair_idx[:, 0]]; obj_visual_feat = visual[pair_idx[:,1]]
             sim_vec = torch.cat([sub_visual_feat, obj_visual_feat, prop_pair_geo_feat], dim = 1)
-            # sim_vec_ = torch.cat([sub_visual_feat, obj_visual_feat], dim = 1)  
             sim_vec = self.fusion_feat(sim_vec)
 
             relness_logits = torch.sigmoid(self.proposal_relness_cls_fc(sim_vec))
             sample_edge, soft_edge = gumbel_sigmoid(relness_logits.view(-1), temperature=self.t)
-            # sample_edge = torch.ones(len(relness_logits)).cuda()
-            # soft_edge = relness_logits
             pre_adj.append(soft_edge.view(-1,1))
 
             combine_weight = sample_edge.view(-1)
-            # if self.predictor == 'BGNNPredictor_Reporting' or self.predictor == 'BGNNPredictor_Self_Training_two_model':
-            if "HetSGG" in self.predictor or "BGNN" in self.predictor:
-                pred_rel_matrix[pair_idx[:, 0], pair_idx[:, 1]] = combine_weight.float()
-            else:
-                pred_rel_matrix = combine_weight
-            # relness_logits = squeeze_tensor(combine_weight)
+            pred_rel_matrix[pair_idx[:, 0], pair_idx[:, 1]] = combine_weight.float()
+            # pred_rel_matrix = combine_weight
             relness_matrix.append(pred_rel_matrix)
     
         return relness_matrix, pre_adj

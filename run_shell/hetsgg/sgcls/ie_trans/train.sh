@@ -14,7 +14,6 @@ if $mutli_gpu;then
   python -m torch.distributed.launch \
     --master_port 10093 --nproc_per_node=$num_gpu \
     tools/relation_train_net.py --config-file "configs/wsup-50.yaml" \
-    DATASETS.TRAIN \(\"50DS_VG_VGKB_train\",\) \
     MODEL.ROI_RELATION_HEAD.USE_GT_BOX True \
     MODEL.ROI_RELATION_HEAD.USE_GT_OBJECT_LABEL False \
     MODEL.ROI_RELATION_HEAD.PREDICTOR HetSGGPredictor_GSL \
@@ -33,7 +32,6 @@ if $mutli_gpu;then
     EM.MODE "x"
 else
   python tools/relation_train_net.py --config-file "configs/wsup-50.yaml" \
-    DATASETS.TRAIN \(\"50DS_VG_VGKB_train\",\) \
     MODEL.ROI_RELATION_HEAD.USE_GT_BOX True \
     MODEL.ROI_RELATION_HEAD.USE_GT_OBJECT_LABEL False \
     MODEL.ROI_RELATION_HEAD.PREDICTOR HetSGGPredictor_GSL \

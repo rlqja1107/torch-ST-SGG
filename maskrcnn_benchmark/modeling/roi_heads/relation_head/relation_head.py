@@ -45,12 +45,12 @@ class ROIRelationHead(torch.nn.Module):
             self.weak_sup = True
             self.wsup_samp_processor = make_weaksup_roi_relation_sample_processor(cfg)
             self.wsup_loss_evaluator = make_weaksup_relation_loss_evaluator(cfg)
-        statistics = torch.load(cfg.OBJ_PRED_INFO_PATH)
+        # statistics = get_dataset_statistics(cfg)
         self.obj_mapping = None
         # For VG-1800
-        if len(statistics['obj_classes']) > 10000:
-            print(str("/home/public/Datasets/CV/vg_1800/{}.pt".format(len(statistics['obj_classes']))))
-            self.obj_mapping = torch.load(str("/home/public/Datasets/CV/vg_1800/{}.pt".format(len(statistics['obj_classes']))))
+        # if len(statistics['obj_classes']) > 10000:
+        #     print(str("/home/public/Datasets/CV/vg_1800/{}.pt".format(len(statistics['obj_classes']))))
+        #     self.obj_mapping = torch.load(str("/home/public/Datasets/CV/vg_1800/{}.pt".format(len(statistics['obj_classes']))))
 
         if cfg.MODEL.ROI_RELATION_HEAD.USE_GT_BOX: # False
             if cfg.MODEL.ROI_RELATION_HEAD.USE_GT_OBJECT_LABEL:

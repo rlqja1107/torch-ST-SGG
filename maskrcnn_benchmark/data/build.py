@@ -10,14 +10,12 @@ import torch.utils.data
 from maskrcnn_benchmark.utils.comm import get_world_size
 from maskrcnn_benchmark.utils.imports import import_file
 from maskrcnn_benchmark.utils.miscellaneous import save_labels
-
 from . import datasets as D
 from . import samplers
 
 from .collate_batch import BatchCollator, BBoxAugCollator
 from .transforms import build_transforms
 
-# by Jiaxin
 def get_dataset_statistics(cfg):
     """
     get dataset statistics (e.g., frequency bias) from training data
@@ -46,6 +44,7 @@ def get_dataset_statistics(cfg):
         factory = getattr(D, data["factory"])
         args = data["args"]
         dataset = factory(**args)
+        logger.info(f"Data Length : {len(dataset)}")
         if cfg.MODEL.ROI_RELATION_HEAD.FAKE_FREQ_BIAS:
             statistics.append(dataset.get_statistics(no_matrix=True))
         else:

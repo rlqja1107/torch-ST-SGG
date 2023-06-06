@@ -33,7 +33,6 @@ if $mutli_gpu;then
     MODEL.ROI_RELATION_HEAD.STSGG_MODULE.ALPHA_INC $ALPHA_INC
 else
   python tools/relation_train_net.py --config-file "configs/wsup-50.yaml" \
-    DATASETS.TRAIN \(\"50DS_VG_VGKB_train\",\) \
     MODEL.ROI_RELATION_HEAD.USE_GT_BOX True \
     MODEL.ROI_RELATION_HEAD.USE_GT_OBJECT_LABEL False \
     MODEL.WEIGHT $PRETRAINED_WEIGHT_PATH \

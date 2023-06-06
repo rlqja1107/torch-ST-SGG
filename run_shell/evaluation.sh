@@ -1,10 +1,10 @@
-export CUDA_VISIBLE_DEVICES="2" # if using multi-gpu, put the multi gpu numbers, e.g., "2,3"
+export CUDA_VISIBLE_DEVICES="1" # if using multi-gpu, put the multi gpu numbers, e.g., "2,3"
 num_gpu=1 # gpu number
 multi_gpu=false
 
 
-export checkpoint_list=("0040000" "0032000") # Put the iteration number of trained model
-export output_dir="checkpoints/50/" # Put the directory for evaluation
+export checkpoint_list=("0028000") # Put the iteration number of trained model
+export output_dir="checkpoints/50/??" # Put the directory for evaluation
 
 if $multi_gpu;then
     for t in ${checkpoint_list[@]}

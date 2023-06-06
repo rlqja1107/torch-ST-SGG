@@ -232,6 +232,8 @@ class MotifPredictor(nn.Module):
         # predict_use_bias is to use bias in the inference
         self.predict_use_bias = config.MODEL.ROI_RELATION_HEAD.PREDICT_USE_BIAS
         # load class dict
+        # statistics = get_dataset_statistics
+        # statistics = get_dataset_statistics(config)
         statistics = torch.load(cfg.OBJ_PRED_INFO_PATH)
         obj_classes, rel_classes = statistics['obj_classes'], statistics['rel_classes']
 
@@ -263,7 +265,7 @@ class MotifPredictor(nn.Module):
         #     convey statistics into FrequencyBias to avoid loading again
             # self.freq_bias = FrequencyBias(config, statistics)
         if self.train_use_bias or self.predict_use_bias:
-            self.freq_bias = FrequencyBias(config, statistics)
+            self.freq_bias = FrequencyBias(config)
 
     def forward(self, proposals, rel_pair_idxs, rel_labels,  rel_binarys, roi_features, union_features, logger=None):
         """
@@ -315,19 +317,11 @@ class MotifPredictor(nn.Module):
 
         if (self.train_use_bias and self.training) or (self.predict_use_bias and not self.training):
             rel_dists = rel_dists + self.freq_bias.index_with_labels(pair_pred.long())
-        # rel_dists[:,[31]] = -20000.
         obj_dists = obj_dists.split(num_objs, dim=0)
         rel_dists = rel_dists.split(num_rels, dim=0)
         
-        # if not self.use_obj_recls_logits:
-        #     obj_dists = [each.get_field("predict_logits") for each in proposals]
 
-        # we use obj_preds instead of pred from obj_dists
-        # because in decoder_rnn, preds has been through a nms stage
         add_losses = {}
-        # if rel_labels is not None and rel_binarys is not None and rel_labels[0].size() == rel_binarys[0].size():
-        #     add_losses['attn_score'] = cat(rel_binarys, dim=0)
-
 
         return obj_dists, rel_dists, add_losses, None, None
 
@@ -1096,7 +1090,7 @@ class BGNNPredictor_GSL(nn.Module):
             config.MODEL.ROI_RELATION_HEAD.OBJECT_CLASSIFICATION_MANNER # replace
         )
         assert self.obj_recls_logits_update_manner in ["replace", "add"]
-        statistics = torch.load(cfg.OBJ_PRED_INFO_PATH)
+        statistics = get_dataset_statistics(cfg)
         obj_classes, rel_classes = statistics['obj_classes'], statistics['rel_classes']
         self.num_obj_cls = len(obj_classes)
         # post classification
@@ -1742,8 +1736,7 @@ class BGNNPredictor_STSGG(nn.Module):
 
         self.rel_aware_model_on = config.MODEL.ROI_RELATION_HEAD.RELATION_PROPOSAL_MODEL.SET_ON # True
 
-        if self.rel_aware_model_on: # True
-            self.rel_aware_loss_eval = GSL_Loss(config)
+        self.rel_aware_loss_eval = GSL_Loss(config)
         self.img_id = 0
         self.pooling_dim = config.MODEL.ROI_RELATION_HEAD.CONTEXT_POOLING_DIM # 2048
         self.fg_bg_score = {}

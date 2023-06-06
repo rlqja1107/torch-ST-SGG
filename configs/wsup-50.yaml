@@ -1,7 +1,7 @@
 
 GLOVE_DIR: /home/public/Datasets/CV/vg_bm
-DATA_DIR : /home/public/Datasets/CV/vg_bm
-
+DATA_DIR : datasets/vg
+OUTPUT_DIR: ""
 INPUT:
   MIN_SIZE_TRAIN: (600,)
   MAX_SIZE_TRAIN: 1000
@@ -101,7 +101,7 @@ MODEL:
     #PREDICTOR: "MotifPredictor"
     #PREDICTOR: "VCTreePredictor"
     #PREDICTOR: "TransformerPredictor" 
-    PREDICTOR: "BGNNPredictor_Gumbel"  # HetSGGplus_Predictor
+    PREDICTOR: "BGNNPredictor_STSGG"  # 
     ################# Parameters for Motif Predictor ##################
     CONTEXT_OBJ_LAYER: 1
     CONTEXT_REL_LAYER: 1
@@ -127,25 +127,15 @@ MODEL:
       REFINE_OBJ: false
       ADD_NON_GT: False
       IS_FULLY_CONNECTED: False
-    SELF_TRAIN_MODULE:
-      NA_NORMALIZE: False
+    STSGG_MODULE:
       SAVE_RESULT: False
-      PSEDUO_CONSTRAINT: 3
-      DECAY_BATCHWISE: True
-      INCREASE_BATCHWISE: True
-      THRESHOLD_NAME: "top_k"
-      ZERO_INITIAL_VALUE: 0.00001
-      ZERO_INITIAL: True
-      USE_GSL_OUTPUT: True
-      INITIALIZE_THRESHOLD: False
-      LAMBDA_COEF: 1.0
-      ALPHA: 0.8
-      ALPHA_DECAY: 0.4
-      FIX_THRESHOLD: False
-      UPPER_BOUND: 1.0
-      CHANGE_PERIOD: 20
+      USE_GSL_OUTPUT: False
+      BETA: 1.0
+      ALPHA_INC: 0.8
+      ALPHA_DEC: 0.4
+      SAVE_CUMULATIVE_PSEUDO_LABEL_INFO_PERIOD: 0
     HETSGG:
-      CATEGORY_FILE: VG-SGG-Category_v2
+      CATEGORY_FILE: Category_Type_Info
       CLASS_AGG: mean
       FEATURE_UPDATE_STEP: 2
       H_DIM: 128
@@ -197,7 +187,7 @@ SOLVER:
     COOLDOWN: 0
     FACTOR: 0.1
     MAX_DECAY_STEP: 3
-OUTPUT_DIR: 'checkpoints/50/motif/sgcls'
+
 TEST:
   ALLOW_LOAD_FROM_CACHE: False
   RELATION:

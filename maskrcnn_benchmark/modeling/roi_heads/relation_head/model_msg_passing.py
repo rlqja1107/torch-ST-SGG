@@ -22,6 +22,7 @@ class PairwiseFeatureExtractor(nn.Module):
         super(PairwiseFeatureExtractor, self).__init__()
         self.cfg = config
         statistics = torch.load(config.OBJ_PRED_INFO_PATH)
+        # statistics = get_dataset_statistics(self.cfg)
         obj_classes, rel_classes = statistics['obj_classes'], statistics['rel_classes']
         self.num_obj_classes = len(obj_classes)
         self.num_rel_classes = len(rel_classes)

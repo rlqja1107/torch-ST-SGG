@@ -21,7 +21,7 @@ class ST_SGG(nn.Module):
         self.use_gsl_output = cfg.MODEL.ROI_RELATION_HEAD.STSGG_MODULE.USE_GSL_OUTPUT
         
         # statistics: information of N predicate class
-        statistics = torch.load("initial_data/obj_pred_info_1800") if self.num_rel_cls > 200 else torch.load("initial_data/obj_pred_info_50")
+        statistics = torch.load("initial_data/obj_pred_info/obj_pred_info_1800") if self.num_rel_cls > 200 else torch.load("initial_data/obj_pred_info/obj_pred_info_50")
         fg_matrix = statistics['fg_matrix']
         pred_count = fg_matrix.sum(0).sum(0)[1:]
         pred_count = torch.hstack([torch.LongTensor([0]), pred_count])
@@ -111,7 +111,7 @@ class ST_SGG(nn.Module):
         self.forward_time += 1
     
     
-    def forward(self, rel_pair_idxs, inst_proposals, rel_labels, pred_rel_logits, gsl_output=None):
+    def forward(self, rel_pair_idxs, inst_proposals, rel_labels, pred_rel_logits, gsl_outputs=None):
         rel_pseudo_labels = []
         n_class = torch.zeros(self.num_rel_cls, dtype=torch.float)
         gt_or_pseudo_list = [] # 1: assign pseudo-label, 0: No assign
@@ -129,9 +129,9 @@ class ST_SGG(nn.Module):
             pred_rel_class += 1
             rel_confidence_threshold = self.pred_threshold[pred_rel_class]
             
-            if gsl_output is not None and self.use_gsl_output:
+            if gsl_outputs is not None and self.use_gsl_output:
                 # use graph strcuture learner to give the confident pseudo-labels
-                gsl_output = gsl_output[i].detach()
+                gsl_output = gsl_outputs[i].detach()
                 gsl_output = gsl_output[rel_pair[:,0], rel_pair[:,1]][n_annotate_label:]
                 valid_pseudo_label_idx = (rel_confidence >= rel_confidence_threshold)[n_annotate_label:]
                 valid_pseudo_label_idx = valid_pseudo_label_idx & (gsl_output == 1)

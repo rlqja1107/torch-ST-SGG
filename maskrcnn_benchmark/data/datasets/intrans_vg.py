@@ -64,7 +64,6 @@ class InTransDataset(torch.utils.data.Dataset):
 
         self.custom_eval = custom_eval
         self.data = pickle.load(open(specified_data_file, "rb"))
-        self.use_kb = config.MODEL.ROI_RELATION_HEAD.SELF_TRAIN_MODULE.USE_KB
 
         print(specified_data_file)
         self.img_info = [{"width":x["width"], "height": x["height"]} for x in self.data]
@@ -92,9 +91,6 @@ class InTransDataset(torch.utils.data.Dataset):
         img_id = self.get_img_id(self.data[index]["img_path"])
         if self.transforms is not None:
             img, target = self.transforms(img, target)
-        if self.use_kb:
-            target.extra_fields['possible_rels'] = self.clip_logit[img_id]['possible_rels']
-            target.extra_fields['possible_pairs'] = self.clip_logit[img_id]['pairs']
         # append current raw data
         # it is unusable under most conditions
         target.add_field("cur_data", self.data[index])

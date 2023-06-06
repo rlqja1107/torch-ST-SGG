@@ -39,6 +39,7 @@ root
 ├── datasets 
 │   └── vg
 │       └── 50 
+|           │── Category_Type_Info.json
 │           │── VG-SGG-with-attri.h5
 │           │── VG-SGG-dicts-with-attri.json
 │           ├── VGKB.json
@@ -49,3 +50,5 @@ root
 │           └── VG_100k
 │                 └── *.png
 ```
+
+* *Category_Type_Info.json* is for HetSGG predictor.

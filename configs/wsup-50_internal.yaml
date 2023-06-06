@@ -1,7 +1,7 @@
 EM:
   MODE: E
 GLOVE_DIR: /home/public/Datasets/CV/vg_bm
-DATA_DIR : /home/public/Datasets/CV/vg_bm
+DATA_DIR : datasets/vg
 
 INPUT:
   MIN_SIZE_TRAIN: (600,)
@@ -182,7 +182,7 @@ SOLVER:
     COOLDOWN: 0
     FACTOR: 0.1
     MAX_DECAY_STEP: 3
-OUTPUT_DIR: 'checkpoints/50/motif/sgcls'
+OUTPUT_DIR: ''
 TEST:
   IMS_PER_BATCH: 1
   ALLOW_LOAD_FROM_CACHE: False

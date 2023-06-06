@@ -59,3 +59,4 @@ requirements.txt
 50DS_VG_VGKB_train_statistics.cache
 .vscode/
 obj_pred_info_1800
+pretrained_model/
