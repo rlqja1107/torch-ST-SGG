@@ -25,12 +25,12 @@ triplets, and iteratively trains the SGG model based on them (See (b)). By activ
 [INSTALL.md](INSTALL.md)
 
 ## **Dataset**
-
+****
 [DATASET.md](DATASET.md)
 
 ## **Pre-trained Object Detector**
 
-As ST-SGG framework is composed of two-stage, please download the pre-trained detector from following [source](https://drive.google.com/file/d/1NrqQId-O0K50-ik1cMHJC2ZLaU5eBJcv/view?usp=share_link). Following the most of previous studies, we use the [Faster R-CNN](https://proceedings.neurips.cc/paper_files/paper/2015/file/14bfa6bb14875e45bba028a21ed38046-Paper.pdf) as the detector. For SGDet task, the detector trained on VG-50 dataset extracts the 80 proposals including the object class distribution and visual feature. Please put the pre-trained detector's model (vg_faster_det.pth) on `Pre-trained_Detector` directory.
+As ST-SGG framework is composed of two-stage, please download the pre-trained detector from following [source](https://drive.google.com/file/d/1NrqQId-O0K50-ik1cMHJC2ZLaU5eBJcv/view?usp=share_link). Following the most of previous studies, we use the [Faster R-CNN](https://proceedings.neurips.cc/paper_files/paper/2015/file/14bfa6bb14875e45bba028a21ed38046-Paper.pdf) as the detector. For SGDet task, the detector trained on VG-50 dataset extracts the 80 proposals including the object class distribution and visual feature. Please put the pre-trained detector's model (vg_faster_det.pth) on `Pretrained_model` directory.
 
 ## **Training**
 
@@ -101,6 +101,7 @@ bash run_shell/evaluation.sh
 ```  
 If you want to evaluate the specific checkpoints, put the iteration number of trained model in *checkpoint_list* variable in `run_shell/evaluation.sh` shell.
 
+For evaluating our pre-trained models, please refer to [MODEL.md](MODEL.md)
 
 ### Directory Structure for Shell files
 

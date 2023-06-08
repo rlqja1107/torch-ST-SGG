@@ -52,18 +52,14 @@ class VGDataset(torch.utils.data.Dataset):
         self.filter_non_overlap = filter_non_overlap and self.split == 'train'
         self.filter_duplicate_rels = filter_duplicate_rels and self.split == 'train'
         self.transforms = transforms
-        self.repeat_dict = None
         
         self.ind_to_classes, self.ind_to_predicates, self.ind_to_attributes = load_info(self.dict_file) # contiguous 151, 51 containing __background__
         self.categories = {i : self.ind_to_classes[i] for i in range(len(self.ind_to_classes))}
         logger = logging.getLogger("ST-SGG.dataset")
         self.logger = logger
 
-        self.custom_bboxes = None
         self.repeat_dict = None # For bilvl sampling
         
-
-
         self.split_mask, self.gt_boxes, self.gt_classes, self.gt_attributes, self.relationships = load_graphs(
             self.roidb_file, self.split, num_im, num_val_im=num_val_im,
             filter_empty_rels=filter_empty_rels,
@@ -189,7 +185,7 @@ class VGDataset(torch.utils.data.Dataset):
         target.add_field("attributes", torch.from_numpy(self.gt_attributes[index]))
 
         relation = self.relationships[index].copy() # (num_rel, 3)
-        if True:
+        if self.filter_duplicate_rels: # Notice it
             # Filter out dupes!
             # assert self.split == 'train'
             old_size = relation.shape[0]
@@ -226,7 +222,6 @@ class VGDataset(torch.utils.data.Dataset):
                 target.add_field("relation_non_masked", relation_map_non_masked.long(), is_triplet=True)
             if evaluation:
                 target = target.clip_to_image(remove_empty=False)
-                target.add_field("relation_tuple", torch.LongTensor(relation)) # for evaluation
             else:
                 target = target.clip_to_image(remove_empty=True)
             target.add_field("relation_tuple", torch.LongTensor(

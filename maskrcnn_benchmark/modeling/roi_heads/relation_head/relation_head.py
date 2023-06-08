@@ -133,10 +133,10 @@ class ROIRelationHead(torch.nn.Module):
                     proposal.add_field("predict_logits", to_onehot(obj_labels, self.num_obj_cls))
                 proposal.add_field("pred_scores", torch.ones(len(obj_labels)).to(features[0].device))
                 proposal.add_field("pred_labels", obj_labels)
-        else:
-            if not self.object_cls_refine:
-                for each in proposals:
-                    each.extra_fields['pred_labels'] = torch.max(each.extra_fields['predict_logits'][:,1:], 1).indices + 1            
+        # else:
+        #     if not self.object_cls_refine:
+        #         for each in proposals:
+        #             each.extra_fields['pred_labels'] = torch.max(each.extra_fields['predict_logits'][:,1:], 1).indices + 1            
 
         roi_features = self.box_feature_extractor(features, proposals)
 
@@ -154,8 +154,8 @@ class ROIRelationHead(torch.nn.Module):
 
         # for test
         if not self.training:
-            # if not self.object_cls_refine:
-            #     refine_logits = [prop.extra_fields['predict_logits'] for prop in proposals]
+            if not self.object_cls_refine:
+                refine_logits = [prop.extra_fields['predict_logits'] for prop in proposals]
             result = self.post_processor((relation_logits, refine_logits), rel_pair_idxs, proposals)
             return roi_features, result, {}
 

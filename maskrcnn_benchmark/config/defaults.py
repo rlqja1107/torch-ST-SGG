@@ -46,7 +46,7 @@ _C.MODEL.CLS_AGNOSTIC_BBOX_REG = False
 _C.MODEL.WEIGHT = ""
 
 # checkpoint of detector, for relation prediction
-_C.MODEL.PRETRAINED_DETECTOR_CKPT = "Pre-trained_Detector/vg_faster_det.pth"
+_C.MODEL.PRETRAINED_DETECTOR_CKPT = "Pretrained_model/vg_faster_det.pth"
 
 # -----------------------------------------------------------------------------
 # INPUT

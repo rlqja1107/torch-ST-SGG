@@ -1932,15 +1932,13 @@ class HetSGGPredictor_STSGG(nn.Module):
         self.rel_classifier = build_classifier(self.hidden_dim, self.num_rel_cls)
         self.obj_classifier = build_classifier(self.hidden_dim, self.num_obj_cls)
 
-        self.rel_aware_model_on = config.MODEL.ROI_RELATION_HEAD.RELATION_PROPOSAL_MODEL.SET_ON
         self.rel_aware_loss_eval = GSL_Loss(config)
 
         self.pooling_dim = config.MODEL.ROI_RELATION_HEAD.CONTEXT_POOLING_DIM
 
         # freq
         if self.use_bias:
-            statistics = get_dataset_statistics(config)
-            self.freq_bias = FrequencyBias(config, statistics)
+            self.freq_bias = FrequencyBias(config)
             self.freq_lambda = nn.Parameter(
                 torch.Tensor([1.0]), requires_grad=False
             )  # hurt performance when set learnable
@@ -1988,11 +1986,6 @@ class HetSGGPredictor_STSGG(nn.Module):
             rel_pair_idxs (list[Tensor]): (num_rel, 2) index of subject and object
             union_features (Tensor): (batch_num_rel, context_pooling_dim): visual union feature of each pair
         """
-        for prop in inst_proposals:
-            pred_score, pred_label = torch.max(torch.softmax(prop.extra_fields['predict_logits'], dim=1), 1)
-            prop.extra_fields['pred_labels'] = pred_label
-            prop.extra_fields['pred_scores'] = pred_score
-        
 
         obj_feats, rel_feats, pre_cls_logits, one_hot_edge_list = self.context_layer(
             roi_features, union_features, inst_proposals, rel_pair_idxs, rel_binarys, logger

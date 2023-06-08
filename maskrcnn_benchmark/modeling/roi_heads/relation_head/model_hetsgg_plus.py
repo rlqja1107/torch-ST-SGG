@@ -800,26 +800,24 @@ class HetSGGplus_Context(nn.Module):
             pre_cls_logits = None
 
             pred_relatedness_scores = None
-            if self.rel_aware_on:
-                # input_features = refine_ent_feats_each_iters[-1]
-
-                input_features = refine_rel_feats_each_iters[-1]
-                if not self.shared_pre_rel_classifier:
-                    pre_cls_logits, pred_relatedness_scores = self.relation_conf_aware_models[
-                        refine_iter
-                    ](input_features, proposals, rel_pair_inds)
-
-                    
-
-
-
+            if True:
+                if self.rel_aware_module_type == 'RelAwareRelFeature':
+                    input_features = refine_rel_feats_each_iters[-1]
                 else:
-                    pre_cls_logits, pred_relatedness_scores = self.relation_conf_aware_models(
-                        input_features, proposals, rel_pair_inds
-                    )
-                pre_cls_logits_each_iter.append(pre_cls_logits)
-            relatedness_scores = pred_relatedness_scores
+                    input_features = refine_ent_feats_each_iters[-1]
+                one_hot_edge, pred_adj = self.relation_conf_aware_models[
+                    refine_iter
+                ](input_features, proposals, rel_pair_inds)
+    
+                if self.rel_aware_module_type == 'RelAwareRelFeature':
+                    pre_cls_logits_each_iter.append(one_hot_edge)
+                    relatedness_scores = pred_adj
+                else:
+                    pre_cls_logits_each_iter.append(torch.cat(pred_adj))
+                    relatedness_scores = one_hot_edge
 
+
+            relatedness_each_iters.append(relatedness_scores)
             # apply GT
             if self.apply_gt_for_rel_conf:
                 ref_relatedness = rel_gt_binarys.clone()
@@ -1029,6 +1027,6 @@ class HetSGGplus_Context(nn.Module):
             refine_ent_feats_each_iters[-1],
             refine_rel_feats_each_iters[-1],
             pre_cls_logits_each_iter,
-            relatedness_each_iters,
+            relatedness_each_iters[-1],
         )
 

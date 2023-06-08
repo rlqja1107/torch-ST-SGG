@@ -84,7 +84,7 @@ class ROIBoxHead(torch.nn.Module):
                     # mode==sgcls
                     # add field:class_logits into gt proposals, note field:labels is still gt
                     class_logits, _ = self.predictor(x)
-                    proposals = add_predict_logits(proposals, class_logits)
+                    # proposals = add_predict_logits(proposals, class_logits)
                     proposals = add_predict_info(proposals, class_logits)
                     return x, proposals, {}
             else:
@@ -93,7 +93,7 @@ class ROIBoxHead(torch.nn.Module):
                     proposals = self.samp_processor.assign_label_to_proposals(proposals, targets)
                 x = self.feature_extractor(features, proposals)
                 class_logits, box_regression = self.predictor(x)
-                proposals = add_predict_logits(proposals, class_logits)
+                proposals = add_predict_info(proposals, class_logits)
                 
                 # post process:
                 # filter proposals using nms, keep original bbox, add a field 'boxes_per_cls' of size (#nms, #cls, 4)

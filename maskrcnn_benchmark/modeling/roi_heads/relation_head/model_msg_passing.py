@@ -82,21 +82,21 @@ class PairwiseFeatureExtractor(nn.Module):
             make_fc(32, self.geometry_feat_dim), nn.ReLU(inplace=True),
         ])
 
-        if self.rel_feature_type in ["obj_pair", "fusion"]:
-            self.spatial_for_vision = config.MODEL.ROI_RELATION_HEAD.CAUSAL.SPATIAL_FOR_VISION
-            if self.spatial_for_vision:
-                self.spt_emb = nn.Sequential(*[make_fc(32, self.hidden_dim),
-                                               nn.ReLU(inplace=True),
-                                               make_fc(self.hidden_dim, self.hidden_dim * 2),
-                                               nn.ReLU(inplace=True)
-                                               ])
-                layer_init(self.spt_emb[0], xavier=True)
-                layer_init(self.spt_emb[2], xavier=True)
 
-            self.pairwise_rel_feat_finalize_fc = nn.Sequential(
-                make_fc(self.hidden_dim * 2, self.pooling_dim),
-                nn.ReLU(inplace=True),
-            )
+        self.spatial_for_vision = config.MODEL.ROI_RELATION_HEAD.CAUSAL.SPATIAL_FOR_VISION
+        if self.spatial_for_vision:
+            self.spt_emb = nn.Sequential(*[make_fc(32, self.hidden_dim),
+                                            nn.ReLU(inplace=True),
+                                            make_fc(self.hidden_dim, self.hidden_dim * 2),
+                                            nn.ReLU(inplace=True)
+                                            ])
+            layer_init(self.spt_emb[0], xavier=True)
+            layer_init(self.spt_emb[2], xavier=True)
+
+        self.pairwise_rel_feat_finalize_fc = nn.Sequential(
+            make_fc(self.hidden_dim * 2, self.pooling_dim),
+            nn.ReLU(inplace=True),
+        )
 
         # map bidirectional hidden states of dimension self.hidden_dim*2 to self.hidden_dim
         self.obj_hidden_linear = make_fc(self.obj_dim + self.embed_dim + self.geometry_feat_dim, self.hidden_dim)
@@ -203,21 +203,13 @@ class PairwiseFeatureExtractor(nn.Module):
         else:
             augment_obj_feat = cat((inst_roi_feats, augment_obj_feat), -1)
 
-        if self.rel_feature_type == "obj_pair" or self.rel_feature_type == "fusion":
-            rel_features = self.pairwise_rel_features(augment_obj_feat, union_features,
-                                                      rel_pair_idxs, inst_proposals)
-            if self.rel_feature_type == "fusion":
-                if self.rel_feat_dim_not_match:
-                    union_features = self.rel_feature_up_dim(union_features)
-                rel_features = union_features + rel_features
+        rel_features = self.pairwise_rel_features(augment_obj_feat, union_features,
+                                                    rel_pair_idxs, inst_proposals)
+        if self.rel_feat_dim_not_match:
+            union_features = self.rel_feature_up_dim(union_features)
+        rel_features = union_features + rel_features
 
-        elif self.rel_feature_type == "union":
-            if self.rel_feat_dim_not_match:
-                union_features = self.rel_feature_up_dim(union_features)
-            rel_features = union_features
 
-        else:
-            assert False
         # mapping to hidden
         augment_obj_feat = self.obj_feat_aug_finalize_fc(augment_obj_feat)
 
