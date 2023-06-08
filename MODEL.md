@@ -15,7 +15,7 @@ bash run_shell/evaluation4pretrained_model.sh
 
 Task | Link 
 -- | -- 
-SGCls   | [link](https://drive.google.com/file/d/1Myb_JR9bm32PUNEPyVypWIpTPqCrS_uS/view?usp=sharing) 
+SGCls   | [link](https://drive.google.com/file/d/1ZBMh-4yYfN81dxemysYYg5uacfmMvKTe/view?usp=sharing) 
 SGDet   | [link](https://drive.google.com/file/d/1O8Z6YWwT3nLJTsArP3d2-zUqi0hRbFee/view?usp=sharing) 
 
 ## **BGNN**  

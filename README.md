@@ -25,7 +25,7 @@ triplets, and iteratively trains the SGG model based on them (See (b)). By activ
 [INSTALL.md](INSTALL.md)
 
 ## **Dataset**
-****
+
 [DATASET.md](DATASET.md)
 
 ## **Pre-trained Object Detector**
