@@ -107,6 +107,8 @@ For evaluating our pre-trained models, please refer to [MODEL.md](MODEL.md)
 
 ```python
 run_shell  
+├── evaluation.sh  
+├── evaluation4pretrained_model.sh
 ├── motif 
 │   ├── predcls
 │   │    ├── vanilla

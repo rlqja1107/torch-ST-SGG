@@ -6,7 +6,7 @@ import copy
 
 
 class DatasetCatalog(object):
-    DATA_DIR = "datasets_vg"
+    DATA_DIR = "datasets"
     DATASETS = {
         "coco_2017_train": {
             "img_dir": "coco/train2017",
@@ -127,10 +127,10 @@ class DatasetCatalog(object):
             "distant_supervsion_file": "vg/20/CCKB.json",
         },
         "50VG_stanford_filtered_with_attribute": {
-            "img_dir": "/home/public/Datasets/CV/vg_bm/VG_100k",
+            "img_dir": "vg/50/VG_100k",
             "roidb_file": "vg/50/VG-SGG-with-attri.h5",
             "dict_file": "vg/50/VG-SGG-dicts-with-attri.json",
-            "image_file": "/home/public/Datasets/CV/vg_bm/image_data.json",
+            "image_file": "vg/50/image_data.json",
         },
         # "50VG_stanford_filtered_with_attribute": {
         #     "img_dir": "/home/public/Datasets/CV/vg_bm/VG_100k",
