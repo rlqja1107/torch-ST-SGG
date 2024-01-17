@@ -24,7 +24,7 @@ SGDet   | [link](https://drive.google.com/file/d/1qT-dmuP211W6hYJrru7FXngZH9jg2z
 Task | Link | result(.txt)
 -- | -- | --
 SGCls   | [link](https://drive.google.com/file/d/1ZBMh-4yYfN81dxemysYYg5uacfmMvKTe/view?usp=sharing) | [evaluation_res.txt](https://drive.google.com/file/d/1NkfkXMAG287ZeagHSeYWZG6obpyQHg39/view?usp=sharing)
-SGDet   | [link](https://drive.google.com/file/d/1O8Z6YWwT3nLJTsArP3d2-zUqi0hRbFee/view?usp=sharing) | [evaluation_res.txt](https://drive.google.com/file/d/1HmLl4SHSoImBwAqop5q4eW7mcbxq_1b_/view?usp=sharing)
+SGDet   | [link](https://drive.google.com/file/d/1O8Z6YWwT3nLJTsArP3d2-zUqi0hRbFee/view?usp=sharing) | [evaluation_res.txt](https://drive.google.com/file/d/14lJklpqj2KpElrc4qqA7zJWb2ZopBVc8/view?usp=sharing)
 
 ## **BGNN**  
 ---  
@@ -55,7 +55,7 @@ SGDet   | [link](https://drive.google.com/file/d/1dadL5xi33qgqpdJdQ2mgaozixqOZUu
 
 Task | Link | result(.txt)
 -- | -- | --
-SGDet   | [link]() |[evaluation_res.txt](https://drive.google.com/file/d/1Yfn96aLmtj8BiPhLnfER0a8IO0FYDCAU/view?usp=sharing)
+SGDet   | [link](https://drive.google.com/file/d/14lJklpqj2KpElrc4qqA7zJWb2ZopBVc8/view?usp=sharing) |[evaluation_res.txt](https://drive.google.com/file/d/1Yfn96aLmtj8BiPhLnfER0a8IO0FYDCAU/view?usp=sharing)
 
 ## **Notice**  
 
