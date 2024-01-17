@@ -1,4 +1,6 @@
-# Adaptive Self-training Framework for Fine-grained Scene Graph Generation
+# [ICLR 2024] Adaptive Self-training Framework for Fine-grained Scene Graph Generation
+
+This repository is the official code for the paper [Adaptive Self-training Framework for Fine-grained Scene Graph Generation](https://openreview.net/pdf?id=WipsLtH77t)  
 
 
 ## **Overview**

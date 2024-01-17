@@ -3,22 +3,7 @@
 Basic training script for PyTorch
 """
 import os
-# os.environ['CUDA_VISIBLE_DEVICES'] = '3'
 import sys
-import sys
-flag= True
-while flag:
-    for i, j  in enumerate(sys.path):
-        if "WSSGG" in j or 'PLA' in j or 'SGG' in j or 'SGG_Reporting' in j or 'VS3_CVPR23' in j:
-            del sys.path[i]
-            break
-    n = len(sys.path)
-    cnt = 0
-    for i, j  in enumerate(sys.path):
-        if "WSSGG" not in j and 'PLA' not in j and 'SGG_Reporting' not in j and 'VS3_CVPR23' not in j:
-            cnt += 1
-    flag = False if n == cnt else True    
-sys.path.append(".")
 #sys.path.append(os.getcwd())
 # Set up custom environment before nearly anything else is imported
 # NOTE: this should be the first import (no not reorder)
@@ -182,11 +167,7 @@ def train(cfg, local_rank, distributed, logger):
     print_first_grad = True
         
     for iteration, (images, targets, _) in enumerate(train_data_loader, start_iter):
-        # flag=False
-        # for i in targets:
-        #     if i.extra_fields['relation_pair_idxs'].shape[0] <= 1:
-        #         flag=True
-        # if flag: continue
+
         if any(len(target) < 1 for target in targets):
             logger.error(f"Iteration={iteration + 1} || Image Ids used for training {_} || targets Length={[len(target) for target in targets]}" )
         data_time = time.time() - end
