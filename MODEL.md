@@ -59,6 +59,6 @@ SGDet   | [link](https://drive.google.com/file/d/14lJklpqj2KpElrc4qqA7zJWb2ZopBV
 
 ## **Notice**  
 
-The performance of pre-trained models can slightly be different with performance described in paper since the pre-processing of test set is different between [IE-Trans](https://github.com/waxnkw/IETrans-SGG.pytorch/blob/master/DATASET.md) and [BGNN](https://github.com/SHTUPLUS/PySGG/blob/main/DATASET.md). Therefore, if you want to reproduce the performance, you need to evaluate it on BGNN repository. 
+The performance of pre-trained models can slightly be different with performance described in paper since the pre-processing of test set is different between [IE-Trans](https://github.com/waxnkw/IETrans-SGG.pytorch/blob/master/DATASET.md) and [BGNN](https://github.com/SHTUPLUS/PySGG/blob/main/DATASET.md). Therefore, if you want to reproduce the performance, you may evaluate it on BGNN repository. 
 
-Instead, we provide the detailed evaluation result for each model.
+Instead, we provide the detailed evaluation result for each model. 
