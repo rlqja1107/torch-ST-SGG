@@ -139,7 +139,6 @@ run_shell
 ```
 
 ## Acknowledgement
-This code is developed on top of the following repositories:  
-[Scene-Graph-Benchmark.pytorch](https://github.com/KaihuaTang/Scene-Graph-Benchmark.pytorch), [IE-Trans](https://github.com/waxnkw/IETrans-SGG.pytorch?tab=readme-ov-file), and [BGNN](https://github.com/SHTUPLUS/PySGG).
+The code is developed on top of [Scene-Graph-Benchmark.pytorch](https://github.com/KaihuaTang/Scene-Graph-Benchmark.pytorch), [IE-Trans](https://github.com/waxnkw/IETrans-SGG.pytorch?tab=readme-ov-file), and [BGNN](https://github.com/SHTUPLUS/PySGG).
 
 
