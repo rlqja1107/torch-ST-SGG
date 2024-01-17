@@ -34,7 +34,7 @@ As ST-SGG framework is composed of two-stage, please download the pre-trained de
 
 ## **Training**
 
-Here, we mainly describe the implementation for Motif model on PredCls task. However, the other models (e.g., VCTree, BGNN, and HetSGG) can be easily implemented in a similar way. Likewise, the SGCls and SGDet task are executed by changing the **predcls** to **sgcls** or **sgdet** in the shell line. To utilize multiple GPUs for training, you need to modify the variable *mutli_gpu=false* to *mutli_gpu=true* in each shell.
+Here, we mainly describe the implementation for Motif model on PredCls task. However, the other models (e.g., VCTree, BGNN, and HetSGG) can be easily implemented in a similar way. Likewise, the SGCls and SGDet task are executed by changing the **predcls** to **sgcls** or **sgdet** in the shell line. To utilize multiple GPUs for training, you need to modify the variable *mutli_gpu=false* to *mutli_gpu=true* in each shell. To train the model with ST-SGG, please change the model pretrained path (`PRETRAINED_WEIGHT_PATH`) in shell.
 
 ### Vanilla
 
@@ -135,4 +135,9 @@ run_shell
 │   ├── predcls
 │   │   ...
 ```
+
+## Acknowledgement
+This code is develop on top of the following repositories:  
+[Scene-Graph-Benchmark.pytorch](https://github.com/KaihuaTang/Scene-Graph-Benchmark.pytorch), [IE-Trans](https://github.com/waxnkw/IETrans-SGG.pytorch?tab=readme-ov-file), and [BGNN](https://github.com/SHTUPLUS/PySGG).
+
 

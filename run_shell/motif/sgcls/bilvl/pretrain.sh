@@ -2,7 +2,7 @@ export CUDA_VISIBLE_DEVICES="1" # if you use multi-gpu, then insert the number o
 mutli_gpu=false # whether use multi-gpu or not
 num_gpu=2
 OUTPATH="checkpoints/50/motif/sgcls/bilvl" # save directory
-GLOVE_DIR="/home/public/Datasets/CV/vg_bm" # Glove directory
+GLOVE_DIR="Glove" # Glove directory
 mkdir -p $OUTPATH
 
 if $mutli_gpu;then

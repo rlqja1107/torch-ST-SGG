@@ -1,8 +1,8 @@
 export CUDA_VISIBLE_DEVICES="0" # if you use multi-gpu, then insert the number of gpu e.g., export CUDA_VISIBLE_DEVICES="4,5"
 mutli_gpu=false # whether use multi-gpu or not
-num_gpu=2
+num_gpu=1
 OUTPATH="checkpoints/50/motif/predcls/st_sgg" # save directory
-GLOVE_DIR="/home/public/Datasets/CV/vg_bm" # Glove directory
+GLOVE_DIR="Glove" # Glove directory
 SPECIFIED_PATH="datasets/50/motif/Motif_i-trans.pk"
 ALPHA_DEC=0.4
 ALPHA_INC=0.4

@@ -1,6 +1,6 @@
 EM:
   MODE: "E"
-GLOVE_DIR: /home/public/Datasets/CV/vg_bm
+GLOVE_DIR: Glove
 DATA_DIR : datasets/vg
 INPUT:
   MIN_SIZE_TRAIN: (600,)

@@ -780,7 +780,7 @@ _C.TEST.CUSTUM_BBOX_PATH = ''
 # ---------------------------------------------------------------------------- #
 _C.OUTPUT_DIR = "."
 _C.DETECTED_SGG_DIR = "."
-_C.GLOVE_DIR = "/home/public/Datasets/CV/vg_bm"
+_C.GLOVE_DIR = "Glove"
 
 _C.PATHS_CATALOG = os.path.join(os.path.dirname(__file__), "paths_catalog.py")
 _C.PATHS_DATA = os.path.join(os.path.dirname(__file__), "../data/datasets")

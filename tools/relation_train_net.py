@@ -5,7 +5,21 @@ Basic training script for PyTorch
 import os
 # os.environ['CUDA_VISIBLE_DEVICES'] = '3'
 import sys
-sys.path.append(os.getcwd())
+import sys
+flag= True
+while flag:
+    for i, j  in enumerate(sys.path):
+        if "WSSGG" in j or 'PLA' in j or 'SGG' in j or 'SGG_Reporting' in j or 'VS3_CVPR23' in j:
+            del sys.path[i]
+            break
+    n = len(sys.path)
+    cnt = 0
+    for i, j  in enumerate(sys.path):
+        if "WSSGG" not in j and 'PLA' not in j and 'SGG_Reporting' not in j and 'VS3_CVPR23' not in j:
+            cnt += 1
+    flag = False if n == cnt else True    
+sys.path.append(".")
+#sys.path.append(os.getcwd())
 # Set up custom environment before nearly anything else is imported
 # NOTE: this should be the first import (no not reorder)
 from maskrcnn_benchmark.utils.env import setup_environment  # noqa F401 isort:skip

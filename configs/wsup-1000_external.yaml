@@ -2,7 +2,7 @@
 EM:
   MODE: "E"
 
-GLOVE_DIR: /home/public/Datasets/CV/vg_bm
+GLOVE_DIR: Glove
 DATA_DIR : /home/public/Datasets/CV/vg_1800
 OBJ_PRED_INFO_PATH: "initial_data/obj_pred_info/obj_pred_info_1800.pth"
 INPUT:

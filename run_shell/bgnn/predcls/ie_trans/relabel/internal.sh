@@ -2,7 +2,7 @@ export CUDA_VISIBLE_DEVICES="6"
 OUTPATH="checkpoints/50/bgnn/predcls/ie_trans" # put the pre-trained model's path
 MODEL_WEIGHT_PATH="checkpoints/50/bgnn/predcls/ie_trans/pretrain/model_???.pth" # Insert the pretraiend model weight on predcls task
 
-GLOVE_DIR="/home/public/Datasets/CV/vg_bm" # Glove directory
+GLOVE_DIR="Glove" # Glove directory
 
 
 mkdir -p $OUTPATH

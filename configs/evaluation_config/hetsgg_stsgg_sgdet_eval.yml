@@ -19,7 +19,7 @@ EM:
   MODE: null
 EXPERIMENT_NAME: ''
 GLOBAL_BUFFER_ON: false
-GLOVE_DIR: /home/public/Datasets/CV/vg_bm
+GLOVE_DIR: Glove
 IETRANS:
   RWT: false
 INPUT:

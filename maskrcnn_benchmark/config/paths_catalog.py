@@ -132,42 +132,20 @@ class DatasetCatalog(object):
             "dict_file": "vg/50/VG-SGG-dicts-with-attri.json",
             "image_file": "vg/50/image_data.json",
         },
-        # "50VG_stanford_filtered_with_attribute": {
-        #     "img_dir": "/home/public/Datasets/CV/vg_bm/VG_100k",
-        #     "roidb_file": "/home/public/Datasets/CV/vg_bm/VG-SGG-with-attri.h5",
-        #     "dict_file": "/home/public/Datasets/CV/vg_bm/VG-SGG-dicts-with-attri.json",
-        #     "image_file": "/home/public/Datasets/CV/vg_bm/image_data.json",
-        # },
         "50DS_VG_VGKB": {
-            "img_dir": "/vg/50/VG_100k",
+            "img_dir": "vg/50/VG_100k",
             "roidb_file": "vg/50/VG-SGG-with-attri.h5",
             "dict_file": "vg/50/VG-SGG-dicts-with-attri.json",
             "image_file": "vg/50/image_data.json",
             "distant_supervsion_file": "vg/50/VGKB.json",
         },
         "50DS_VG_CCKB": {
-            "img_dir": "/home/public/Datasets/CV/vg_bm/VG_100k",
+            "img_dir": "vg/50/VG_100k",
             "roidb_file": "vg/50/VG-SGG-with-attri.h5",
             "dict_file": "vg/50/VG-SGG-dicts-with-attri.json",
-            "image_file": "/home/public/Datasets/CV/vg_bm/image_data.json",
+            "image_file": "vg/50/image_data.json",
             "distant_supervsion_file": "vg/50/CCKB.json",
-        },
-        # 1000 rels
-        "1000VG_stanford_filtered_with_attribute": {
-            "img_dir": "/home/public/Datasets/CV/vg_bm/VG_100k",
-            "roidb_file": "/home/public/Datasets/CV/vg_1800/VG.h5",
-            "dict_file": "/home/public/Datasets/CV/vg_1800/VG-dicts.json",
-            "image_file": "/home/public/Datasets/CV/vg_bm/image_data.json",
-            "obj_mapping_file": "/home/public/Datasets/CV/vg_1800/70099.pt"
-        },
-        "1000DS_VG_VGKB": {
-            "img_dir": "/home/public/Datasets/CV/vg_bm/VG_100k",
-            "roidb_file": "/home/public/Datasets/CV/vg_1800/VG.h5",
-            "dict_file": "/home/public/Datasets/CV/vg_1800/VG-dicts.json",
-            "image_file": "/home/public/Datasets/CV/vg_bm/image_data.json",
-            "distant_supervsion_file": "/home/public/Datasets/CV/vg_1800/VGKB.json",
-            "obj_mapping_file": "/home/public/Datasets/CV/vg_1800/70099.pt"
-        },
+        }
     }
 
     @staticmethod

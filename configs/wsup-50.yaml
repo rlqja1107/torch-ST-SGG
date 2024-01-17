@@ -1,7 +1,7 @@
 
-GLOVE_DIR: /home/public/Datasets/CV/vg_bm
+GLOVE_DIR: Glove
 DATA_DIR : datasets/vg
-OUTPUT_DIR: ""
+OUTPUT_DIR: "test"
 INPUT:
   MIN_SIZE_TRAIN: (600,)
   MAX_SIZE_TRAIN: 1000
@@ -101,7 +101,7 @@ MODEL:
     #PREDICTOR: "MotifPredictor"
     #PREDICTOR: "VCTreePredictor"
     #PREDICTOR: "TransformerPredictor" 
-    PREDICTOR: "BGNNPredictor_STSGG"  # 
+    PREDICTOR: "MotifPredictor" 
     ################# Parameters for Motif Predictor ##################
     CONTEXT_OBJ_LAYER: 1
     CONTEXT_REL_LAYER: 1
@@ -176,8 +176,8 @@ SOLVER:
   GRAD_NORM_CLIP: 5.0
   STEPS: (10000, 16000)
   MAX_ITER: 40000
-  VAL_PERIOD: 5
-  CHECKPOINT_PERIOD: 5
+  VAL_PERIOD: 5000
+  CHECKPOINT_PERIOD: 5000
   PRINT_GRAD_FREQ: 4000
   SCHEDULE:
     # the following paramters are only used for WarmupReduceLROnPlateau
@@ -198,13 +198,13 @@ TEST:
   CUSTUM_EVAL: False       # eval SGDet model on custum images, output a json
   CUSTUM_PATH: '.'         # the folder that contains the custum images, only jpg files are allowed  
 IETRANS:
-  RWT: True
+  RWT: False
 WSUPERVISE:
   # SPECIFIED_DATA_FILE: "checkpoints/50/motif/em_E.pk"
-  SPECIFIED_DATA_FILE: "datasets_vg/vg/50/vg_clip_logits.pk"
+  SPECIFIED_DATA_FILE: "checkpoints/50/motif/Final_data/yes_ext_yes_int.pk"
   METHOD: "VG_DS"
   DATASET: InTransDataset
-  LOSS_TYPE: "ce_rwt"
+  LOSS_TYPE: "ce"
   FL:
     GAMMA: -0.1
     ALPHA: 0.4

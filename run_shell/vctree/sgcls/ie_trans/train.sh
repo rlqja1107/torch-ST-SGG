@@ -4,7 +4,7 @@ num_gpu=2
 
 OUTPATH="checkpoints/50/vctree/sgcls/no_ext_yes_int"
 SPECIFIED_PATH="datasets/50/vctree/VCTree_i-trans.pk"
-GLOVE_DIR="/home/public/Datasets/CV/vg_bm" # Glove directory
+GLOVE_DIR="Glove" # Glove directory
 
 mkdir -p $OUTPATH
 # cp $EXP/50/motif/predcls/lt/combine/relabel/em_E.pk $OUTPATH/em_E.pk

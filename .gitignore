@@ -34,7 +34,6 @@ checkpoint/
 
 # MacOS
 .DS_Store
-
 checkpoints/
 predcls-HetSGGPredictor_plus-vg/
 output/
@@ -59,4 +58,5 @@ requirements.txt
 50DS_VG_VGKB_train_statistics.cache
 .vscode/
 obj_pred_info_1800
-pretrained_model/
+Pretrained_model/vg_faster_det.pth
+pretrained_model
