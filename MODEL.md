@@ -31,7 +31,7 @@ SGDet   | [link](https://drive.google.com/file/d/1O8Z6YWwT3nLJTsArP3d2-zUqi0hRbF
 ### [Resampling](https://github.com/SHTUPLUS/PySGG)  
 
 Task | Link | result(.txt)
--- | -- | result(.txt)
+-- | -- | --
 PredCls   | [link](https://drive.google.com/file/d/1MywMamIJZjCeVdXZrzDnbZZWeOcXTyYY/view?usp=sharing) | [evaluation_res.txt](yes)
 SGCls   | [link](https://drive.google.com/file/d/12sQfBv-dtFH2Ie7TFbSuczkzf65kCB-f/view?usp=sharing) | [evaluation_res.txt](yes)
 SGDet   | [link](https://drive.google.com/file/d/1O8Z6YWwT3nLJTsArP3d2-zUqi0hRbFee/view?usp=sharing) | [evaluation_res.txt](yes)
