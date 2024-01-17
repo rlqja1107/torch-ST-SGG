@@ -16,15 +16,15 @@ bash run_shell/evaluation4pretrained_model.sh
 
 Task | Link | result(.txt)
 -- | -- | --
-SGCls   | [link]() | [evaluation_res.txt](yes)
-SGDet   | [link](https://drive.google.com/file/d/1qT-dmuP211W6hYJrru7FXngZH9jg2zlB/view?usp=sharing) | [evaluation_res.txt](yes)
+SGCls   | [link](https://drive.google.com/file/d/1ynO4vgaeCZYWcbYoe1EvyGucz6yGrd9I/view?usp=sharing) | [evaluation_res.txt](https://drive.google.com/file/d/1RTWR11vmEbTsJwkl2gXbvCIG3CrBnHvF/view?usp=sharing)
+SGDet   | [link](https://drive.google.com/file/d/1qT-dmuP211W6hYJrru7FXngZH9jg2zlB/view?usp=sharing) | [evaluation_res.txt](https://drive.google.com/file/d/1b8tyQ0KCWFJe9dHHLo7orO3bPt_OY7Y8/view?usp=sharing)
 
 ### [Resampling](https://github.com/SHTUPLUS/PySGG)  
 
 Task | Link | result(.txt)
 -- | -- | --
-SGCls   | [link](https://drive.google.com/file/d/1ZBMh-4yYfN81dxemysYYg5uacfmMvKTe/view?usp=sharing) | [evaluation_res.txt](yes)
-SGDet   | [link](https://drive.google.com/file/d/1O8Z6YWwT3nLJTsArP3d2-zUqi0hRbFee/view?usp=sharing) | [evaluation_res.txt](yes)
+SGCls   | [link](https://drive.google.com/file/d/1ZBMh-4yYfN81dxemysYYg5uacfmMvKTe/view?usp=sharing) | [evaluation_res.txt](https://drive.google.com/file/d/1NkfkXMAG287ZeagHSeYWZG6obpyQHg39/view?usp=sharing)
+SGDet   | [link](https://drive.google.com/file/d/1O8Z6YWwT3nLJTsArP3d2-zUqi0hRbFee/view?usp=sharing) | [evaluation_res.txt](https://drive.google.com/file/d/1HmLl4SHSoImBwAqop5q4eW7mcbxq_1b_/view?usp=sharing)
 
 ## **BGNN**  
 ---  
@@ -32,15 +32,15 @@ SGDet   | [link](https://drive.google.com/file/d/1O8Z6YWwT3nLJTsArP3d2-zUqi0hRbF
 
 Task | Link | result(.txt)
 -- | -- | --
-PredCls   | [link](https://drive.google.com/file/d/1MywMamIJZjCeVdXZrzDnbZZWeOcXTyYY/view?usp=sharing) | [evaluation_res.txt](yes)
-SGCls   | [link](https://drive.google.com/file/d/12sQfBv-dtFH2Ie7TFbSuczkzf65kCB-f/view?usp=sharing) | [evaluation_res.txt](yes)
-SGDet   | [link](https://drive.google.com/file/d/1O8Z6YWwT3nLJTsArP3d2-zUqi0hRbFee/view?usp=sharing) | [evaluation_res.txt](yes)
+PredCls   | [link](https://drive.google.com/file/d/1MywMamIJZjCeVdXZrzDnbZZWeOcXTyYY/view?usp=sharing) | [evaluation_res.txt](https://drive.google.com/file/d/18iZcb3VN-WYbJCaEOIW2fj4msXPOULjb/view?usp=sharing)
+SGCls   | [link](https://drive.google.com/file/d/12sQfBv-dtFH2Ie7TFbSuczkzf65kCB-f/view?usp=sharing) | [evaluation_res.txt](https://drive.google.com/file/d/1Qxug1jAOVg3UmB9bawNp8lGYGWf7V-1h/view?usp=sharing)
+SGDet   | [link](https://drive.google.com/file/d/1O8Z6YWwT3nLJTsArP3d2-zUqi0hRbFee/view?usp=sharing) | [evaluation_res.txt](https://drive.google.com/file/d/1MAwDjYEMfrXXp2IcCieaEuoi7DTPG4rc/view?usp=sharing)
 
 ### [I-Trans](https://github.com/waxnkw/IETrans-SGG.pytorch/tree/master)  
 
 Task | Link | result(.txt)
 -- | -- | --
-SGDet   | [link](https://drive.google.com/file/d/1SkkXelvXCLcqMtZS9p8rZ4pyhKnSOfah/view?usp=sharing) | [evaluation_res.txt](yes)
+SGDet   | [link](https://drive.google.com/file/d/1SkkXelvXCLcqMtZS9p8rZ4pyhKnSOfah/view?usp=sharing) | [evaluation_res.txt](https://drive.google.com/file/d/1A7xloNEYxuZZTwC6kGXSzCLeMmbVjPgH/view?usp=sharing)
 
 ## **HetSGG**  
 ---  
@@ -48,14 +48,14 @@ SGDet   | [link](https://drive.google.com/file/d/1SkkXelvXCLcqMtZS9p8rZ4pyhKnSOf
 
 Task | Link | result(.txt)
 -- | -- | --
-SGCls   | [link](https://drive.google.com/file/d/1vvmRSKWr-hJhpOHYxRRRIyqafwbFy99q/view?usp=sharing) | [evaluation_res.txt](yes)
-SGDet   | [link](https://drive.google.com/file/d/1dadL5xi33qgqpdJdQ2mgaozixqOZUum8/view?usp=sharing) |[evaluation_res.txt](yes)
+SGCls   | [link](https://drive.google.com/file/d/1vvmRSKWr-hJhpOHYxRRRIyqafwbFy99q/view?usp=sharing) | [evaluation_res.txt](https://drive.google.com/file/d/1Vv4TmXjq9ieHXFSdaZfdz91Le90SrV0U/view?usp=sharing)
+SGDet   | [link](https://drive.google.com/file/d/1dadL5xi33qgqpdJdQ2mgaozixqOZUum8/view?usp=sharing) |[evaluation_res.txt](https://drive.google.com/file/d/1_xGRTjRAxRmuMX5nmvMYBZe35mfVkh_a/view?usp=sharing)
 
 ### [I-Trans](https://github.com/waxnkw/IETrans-SGG.pytorch/tree/master)  
 
 Task | Link | result(.txt)
 -- | -- | --
-SGDet   | [link](s) |[evaluation_res.txt](yes)
+SGDet   | [link]() |[evaluation_res.txt](https://drive.google.com/file/d/1Yfn96aLmtj8BiPhLnfER0a8IO0FYDCAU/view?usp=sharing)
 
 ## **Notice**  
 
