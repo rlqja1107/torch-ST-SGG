@@ -39,7 +39,7 @@ SGDet   | [link](https://drive.google.com/file/d/1m3LAGtHeZtE-ci4LUo6heG16_aVmM9
 
 Task | Link | result(.txt)
 -- | -- | --
-SGCls   | [link](https://drive.google.com/file/d/1Bo2dX4NmkWJbfSGHBmXiJtlXt6ag7UmX/view?usp=sharing) | [evaluation_res.txt](https://drive.google.com/file/d/1ZEVuqwzvG9v6CSZ5V0GHZwM9M7M-6q0_/view?usp=sharing)
+SGCls   | [link](https://drive.google.com/file/d/1bUCsPfekta6GxDgIF3-j1YgkNcUPTTGB/view?usp=sharing) | [evaluation_res.txt](https://drive.google.com/file/d/1ZEVuqwzvG9v6CSZ5V0GHZwM9M7M-6q0_/view?usp=sharing)
 SGDet   | [link](https://drive.google.com/file/d/1JDUPXzxHG00xjz8RSHGtBI-vlGbd-Tjp/view?usp=sharing) | [evaluation_res.txt](https://drive.google.com/file/d/1arH_4Xzo8sVS7jo2REQIFTpa-TvMvdzd/view?usp=sharing)
 
 
