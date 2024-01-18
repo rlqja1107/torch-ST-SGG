@@ -26,6 +26,23 @@ Task | Link | result(.txt)
 SGCls   | [link](https://drive.google.com/file/d/1ZBMh-4yYfN81dxemysYYg5uacfmMvKTe/view?usp=sharing) | [evaluation_res.txt](https://drive.google.com/file/d/1NkfkXMAG287ZeagHSeYWZG6obpyQHg39/view?usp=sharing)
 SGDet   | [link](https://drive.google.com/file/d/1O8Z6YWwT3nLJTsArP3d2-zUqi0hRbFee/view?usp=sharing) | [evaluation_res.txt](https://drive.google.com/file/d/1cAXjqDbakyLa4vn7GnXt3JYXksuIiJ27/view?usp=sharing)
 
+## **VCTree **  
+
+### Vanilla  
+
+Task | Link | result(.txt)
+-- | -- | --
+SGCls   | [link]() | [evaluation_res.txt](https://drive.google.com/file/d/1eGsAjWGSx0ZZsA3AOamCefahZ4hAqJy6/view?usp=sharing)
+SGDet   | [link](https://drive.google.com/file/d/1m3LAGtHeZtE-ci4LUo6heG16_aVmM9y0/view?usp=sharing) | [evaluation_res.txt](https://drive.google.com/file/d/13z1CAx1Ka97_ztp2I59UexVn9n2qHotg/view?usp=sharing)
+
+### [Resampling](https://github.com/SHTUPLUS/PySGG)  
+
+Task | Link | result(.txt)
+-- | -- | --
+SGCls   | [link](https://drive.google.com/file/d/1Bo2dX4NmkWJbfSGHBmXiJtlXt6ag7UmX/view?usp=sharing) | [evaluation_res.txt](https://drive.google.com/file/d/1ZEVuqwzvG9v6CSZ5V0GHZwM9M7M-6q0_/view?usp=sharing)
+SGDet   | [link](https://drive.google.com/file/d/1JDUPXzxHG00xjz8RSHGtBI-vlGbd-Tjp/view?usp=sharing) | [evaluation_res.txt](https://drive.google.com/file/d/1arH_4Xzo8sVS7jo2REQIFTpa-TvMvdzd/view?usp=sharing)
+
+
 ## **BGNN**  
 ---  
 ### [Resampling](https://github.com/SHTUPLUS/PySGG)  

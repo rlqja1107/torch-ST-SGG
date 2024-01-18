@@ -60,3 +60,10 @@ requirements.txt
 obj_pred_info_1800
 Pretrained_model/vg_faster_det.pth
 pretrained_model
+VCTree_predcls
+VCTree_sgcls
+VCTree_sgdet
+VCTreerwt_predcls
+VCTreerwt_sgcls
+VCTreerwt_sgdet
+VCTree
