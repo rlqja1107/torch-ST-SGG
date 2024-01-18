@@ -32,7 +32,7 @@ SGDet   | [link](https://drive.google.com/file/d/1O8Z6YWwT3nLJTsArP3d2-zUqi0hRbF
 
 Task | Link | result(.txt)
 -- | -- | --
-SGCls   | [link]() | [evaluation_res.txt](https://drive.google.com/file/d/1eGsAjWGSx0ZZsA3AOamCefahZ4hAqJy6/view?usp=sharing)
+SGCls   | [link](https://drive.google.com/file/d/1vlmmFqkMQZF6Y0flnKjtx7bpmeE5-ShD/view?usp=sharing) | [evaluation_res.txt](https://drive.google.com/file/d/1eGsAjWGSx0ZZsA3AOamCefahZ4hAqJy6/view?usp=sharing)
 SGDet   | [link](https://drive.google.com/file/d/1m3LAGtHeZtE-ci4LUo6heG16_aVmM9y0/view?usp=sharing) | [evaluation_res.txt](https://drive.google.com/file/d/13z1CAx1Ka97_ztp2I59UexVn9n2qHotg/view?usp=sharing)
 
 ### [Resampling](https://github.com/SHTUPLUS/PySGG)  
