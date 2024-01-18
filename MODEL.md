@@ -26,7 +26,7 @@ Task | Link | result(.txt)
 SGCls   | [link](https://drive.google.com/file/d/1ZBMh-4yYfN81dxemysYYg5uacfmMvKTe/view?usp=sharing) | [evaluation_res.txt](https://drive.google.com/file/d/1NkfkXMAG287ZeagHSeYWZG6obpyQHg39/view?usp=sharing)
 SGDet   | [link](https://drive.google.com/file/d/1O8Z6YWwT3nLJTsArP3d2-zUqi0hRbFee/view?usp=sharing) | [evaluation_res.txt](https://drive.google.com/file/d/1cAXjqDbakyLa4vn7GnXt3JYXksuIiJ27/view?usp=sharing)
 
-## **VCTree **  
+## **VCTree**  
 
 ### Vanilla  
 
