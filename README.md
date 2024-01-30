@@ -139,6 +139,17 @@ run_shell
 │   │   ...
 ```
 
+## Citation
+
+```
+@article{kim2024adaptive,
+  title={Adaptive Self-training Framework for Fine-grained Scene Graph Generation},
+  author={Kim, Kibum and Yoon, Kanghoon and In, Yeonjun and Moon, Jinyoung and Kim, Donghyun and Park, Chanyoung},
+  journal={arXiv preprint arXiv:2401.09786},
+  year={2024}
+}
+```
+
 ## Acknowledgement
 The code is developed on top of [Scene-Graph-Benchmark.pytorch](https://github.com/KaihuaTang/Scene-Graph-Benchmark.pytorch), [IE-Trans](https://github.com/waxnkw/IETrans-SGG.pytorch?tab=readme-ov-file), and [BGNN](https://github.com/SHTUPLUS/PySGG).
 
